@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section className="bg-gradient-to-r from-gray-50 to-gray-100 py-12 px-6 sm:px-20 mt-12">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6">About Pixify</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-6 mt-6">About Pixify</h2>
         <p className="text-lg text-gray-700 leading-relaxed">
           Welcome to <span className="font-semibold text-gray-800">Pixify</span>
           , your go-to platform for sharing and managing beautiful images. We
