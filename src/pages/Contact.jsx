@@ -24,7 +24,7 @@ const Contact = () => {
   return (
     <section className="bg-gray-100 py-12 px-6 sm:px-20 mt-12">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6">Contact Us</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-6 mt-6">Contact Us</h2>
         <p className="text-lg text-gray-700 leading-relaxed">
           We'd love to hear from you! Whether you have a question, feedback, or
           want to collaborate, feel free to reach out.
