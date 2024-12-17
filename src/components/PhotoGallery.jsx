@@ -64,7 +64,7 @@ const PhotoGallery = () => {
       key: import.meta.env.RAZORPAY_KEY_ID,
       amount: data.amount,
       currency: data.currency,
-      name: "Raj Padval",
+      name: "Sudhanshu Pandey",
       order_id: data.id,
       theme: {
         color: "#5f63b8",
