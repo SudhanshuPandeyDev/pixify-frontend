@@ -33,12 +33,10 @@ const DashboardSidebar = () => {
   };
 
   return (
-    <nav
-      className={`fixed z-10 ${
-        !sidebar == true
-          ? "-translate-x-[500px] sm:translate-x-0"
-          : "translate-x-0"
-      } ease-in-out duration-300 flex sm:static text-lg font-semibold bg-white shadow-lg flex-col gap-2 w-fit min-h-screen p-3 list-none justify-between items-center`}
+   <nav
+  className={`fixed z-10 ${
+    sidebar ? "translate-x-0" : "-translate-x-[500px] sm:translate-x-0"
+  } ease-in-out duration-300 flex sm:static text-lg font-semibold bg-white shadow-lg flex-col gap-2 w-fit min-h-screen p-3 list-none justify-between items-center`}
     >
       <div>
         {/* Circle with my names first letter */}
