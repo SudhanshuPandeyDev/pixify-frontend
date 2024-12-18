@@ -16,7 +16,7 @@
       ]
     },
     {
-      "source": "/(.*).(js|css|jpg|jpeg|png|svg|webp|gif)",  // Matches static assets
+      "source": "/(.*).(js|css|jpg|jpeg|png|svg|webp|gif)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -26,3 +26,4 @@
     }
   ]
 }
+
