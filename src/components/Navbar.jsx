@@ -58,7 +58,7 @@ const Navbar = () => {
         } top-0 left-0 right-0 shadow-md gap-1 sm:gap-0 z-50 bg-white`}
       >
         <div className="flex justify-between items-center">
-          <img src="/logo.png" alt="our logo" className="w-[35px] mx-2" />
+          <img src="/compass-svgrepo-com.svg" alt="our logo" className="w-[35px] mx-2" />
           <Link to="/" className="font-semibold text-3xl">
             Pixify
           </Link>
