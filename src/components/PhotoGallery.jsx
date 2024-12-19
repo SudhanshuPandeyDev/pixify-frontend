@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setAllPosts } from "../../store/slices/postSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const PhotoGallery = () => {
@@ -14,13 +14,21 @@ const PhotoGallery = () => {
 
   const posts = useSelector((state) => state.posts.allPosts);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const [loading, setLoading] = useState(false); // Add a loading state
 
   const getAllImages = async () => {
     if (posts.length > 0) return;
-    const res = await axios.get(import.meta.env.VITE_API_URL + "/post/getAll");
-    const { data } = await res.data;
-    console.log(data);
-    dispatch(setAllPosts(data));
+    setLoading(true); // Start loading
+    try {
+      const res = await axios.get(import.meta.env.VITE_API_URL + "/post/getAll");
+      const { data } = await res.data;
+      console.log(data);
+      dispatch(setAllPosts(data));
+    } catch (error) {
+      toast.error("Failed to load images. Please try again later.");
+    } finally {
+      setLoading(false); // End loading
+    }
   };
 
   const purchaseImage = async (price, id, postUrl, author, title) => {
@@ -46,7 +54,6 @@ const PhotoGallery = () => {
 
       const { data } = await res.data;
       await handlePaymentVerify(data, id, postUrl, author, title, price);
-      // will use using a function here to handle the payment verification
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -108,29 +115,35 @@ const PhotoGallery = () => {
   return (
     <div className="my-20 bg-white flex flex-col justify-center items-center">
       <h3 className="text-3xl font-semibold my-10">Photos</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 bg-20">
-        {posts?.map(({ _id, title, image, price, author }) => {
-          return (
-            <ImageCard
-              key={_id}
-              id={_id}
-              title={title}
-              author={author}
-              img={image}
-              price={price}
-              icon1={
-                <FaShoppingCart
-                  title="Cart"
-                  onClick={() =>
-                    purchaseImage(price, _id, image, author, title)
-                  }
-                  className="text-3xl mr-3 text-black cursor-pointer hover:scale-110 transition-all ease-linear duration-300"
-                />
-              }
-            />
-          );
-        })}
-      </div>
+      {loading ? ( // Show loading text or spinner when loading
+        <div className="text-center text-lg font-medium text-gray-600">
+          Loading photos, please wait...
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 bg-20">
+          {posts?.map(({ _id, title, image, price, author }) => {
+            return (
+              <ImageCard
+                key={_id}
+                id={_id}
+                title={title}
+                author={author}
+                img={image}
+                price={price}
+                icon1={
+                  <FaShoppingCart
+                    title="Cart"
+                    onClick={() =>
+                      purchaseImage(price, _id, image, author, title)
+                    }
+                    className="text-3xl mr-3 text-black cursor-pointer hover:scale-110 transition-all ease-linear duration-300"
+                  />
+                }
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
