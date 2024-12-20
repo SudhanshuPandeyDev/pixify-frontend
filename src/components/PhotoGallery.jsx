@@ -119,7 +119,7 @@ const PhotoGallery = () => {
         <div className="text-center text-lg font-medium text-gray-600">
           <p>Loading photos, please wait...</p>
           {!isAuthenticated && (
-            <p classname="mt-4">
+            <p classname="mt-10">
               Please{" "}
               <span
                 className="text-blue-500 underline cursor-pointer"
