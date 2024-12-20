@@ -117,7 +117,26 @@ const PhotoGallery = () => {
       <h3 className="text-3xl font-semibold my-10">Photos</h3>
       {loading ? ( // Show loading text or spinner when loading
         <div className="text-center text-lg font-medium text-gray-600">
-          Loading photos, please wait...
+          <p>Loading photos, please wait...</p>
+          {!isAuthenticated && (
+            <p>
+              Please{" "}
+              <span
+                className="text-blue-500 underline cursor-pointer"
+                onClick={() => navigate("/login")}
+              >
+                login
+              </span>{" "}
+              or{" "}
+              <span
+                className="text-blue-500 underline cursor-pointer"
+                onClick={() => navigate("/signup")}
+              >
+                signup
+              </span>{" "}
+              to access the full features, including buying and selling photos.
+            </p>
+          )}
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 bg-20">
