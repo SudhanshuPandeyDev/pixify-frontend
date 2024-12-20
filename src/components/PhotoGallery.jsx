@@ -117,7 +117,7 @@ const PhotoGallery = () => {
       <h3 className="text-3xl font-semibold my-10">Photos</h3>
       {loading ? ( // Show loading text or spinner when loading
         <div className="text-center text-lg font-medium text-gray-600">
-          <p classname="mb-4">Loading photos, please wait...</p>
+          <p>Loading photos, please wait...</p>
           {!isAuthenticated && (
             <p>
               Please{" "}
