@@ -114,7 +114,7 @@ const PhotoGallery = () => {
 
   return (
     <div className="my-20 bg-white flex flex-col justify-center items-center">
-      <h3 className="text-3xl font-semibold my-10">Photos</h3>
+      <h3 className="text-3xl font-semibold my-8">Photos</h3>
       {loading ? ( // Show loading text or spinner when loading
         <div className="text-center text-lg font-medium text-gray-600">
           <p>Loading photos, please wait...</p>
