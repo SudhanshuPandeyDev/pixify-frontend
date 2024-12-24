@@ -71,7 +71,7 @@ return (
       <DashboardHeader />
       {posts.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-screen">
-          <p className="text-xl font-semibold text-gray-700 mb-4">
+          <p className="text-xl font-semibold text-gray-700 mb-10">
             You haven't purchased any posts yet.
           </p>
           <Link
