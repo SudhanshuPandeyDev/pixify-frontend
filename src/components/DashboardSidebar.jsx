@@ -102,7 +102,7 @@ const DashboardSidebar = () => {
 
       {/* logout button */}
       <li
-        className="w-full rounded-lg px-2 hover:bg-black hover:text-white cursor-pointer transition-all ease-linear duration-300 hover:scale-105 flex gap-2 justify-start items-center"
+        className="w-full rounded-lg px-2 mb-1 hover:bg-black hover:text-white cursor-pointer transition-all ease-linear duration-300 hover:scale-105 flex gap-2 justify-start items-center"
         onClick={() => dispatch(logout())}
       >
         <IoLogOut /> Logout
