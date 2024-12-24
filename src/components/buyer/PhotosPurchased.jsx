@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { logout } from "../../../store/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +10,6 @@ import { IoArrowDownCircle } from "react-icons/io5";
 
 const PhotosPurchased = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const posts = useSelector((state) => state.posts.myPosts);
 
@@ -37,12 +35,6 @@ const PhotosPurchased = () => {
   useEffect(() => {
     getMyPosts();
   }, []);
-
-   useEffect(() => {
-    if (posts.length === 0) {
-      navigate("/"); 
-    }
-  }, [posts]);
   
   const donwloadImage = async (image, title) => {
     try {
@@ -73,27 +65,41 @@ const PhotosPurchased = () => {
     }
   };
 
-  return (
+return (
     <div>
       <DashboardHeader />
-      <div className="mx-8 grid md:grid-cos-3 lg:grid-cols-4 gap-4">
-        {posts?.map(({ _id, title, postUrl, author, price }) => (
-          <ImageCard
-            key={_id}
-            title={title}
-            price={price}
-            author={author}
-            img={postUrl}
-            icon2={
-              <IoArrowDownCircle
-                title="Download Now"
-                className="text-2xl  text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300"
-                onClick={() => donwloadImage(postUrl, title)}
-              />
-            }
-          />
-        ))}
-      </div>
+      {posts.length === 0 ? (
+        <div className="flex flex-col items-center justify-center h-screen">
+          <p className="text-xl font-semibold text-gray-700 mb-4">
+            You haven't purchased any posts yet.
+          </p>
+          <Link
+            to="/purchase"
+            className="text-blue-500 hover:underline text-lg"
+          >
+            Browse posts to purchase
+          </Link>
+        </div>
+      ) : (
+        <div className="mx-8 grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {posts.map(({ _id, title, postUrl, author, price }) => (
+            <ImageCard
+              key={_id}
+              title={title}
+              price={price}
+              author={author}
+              img={postUrl}
+              icon2={
+                <IoArrowDownCircle
+                  title="Download Now"
+                  className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300"
+                  onClick={() => downloadImage(postUrl, title)}
+                />
+              }
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
