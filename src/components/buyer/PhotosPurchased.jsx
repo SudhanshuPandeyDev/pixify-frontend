@@ -70,7 +70,7 @@ return (
     <div>
       <DashboardHeader />
       {posts.length === 0 ? (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col h-screen mt-10 px-6">
           <p className="text-xl font-semibold text-gray-700 mb-10">
             You haven't purchased any posts yet.
           </p>
