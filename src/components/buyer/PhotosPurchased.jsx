@@ -36,6 +36,12 @@ const PhotosPurchased = () => {
     getMyPosts();
   }, []);
 
+   useEffect(() => {
+    if (posts.length === 0) {
+      navigate("/"); 
+    }
+  }, [posts]);
+  
   const donwloadImage = async (image, title) => {
     try {
       // fetch the image from provided url
