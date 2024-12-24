@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { logout } from "../../../store/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +11,7 @@ import { IoArrowDownCircle } from "react-icons/io5";
 
 const PhotosPurchased = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const posts = useSelector((state) => state.posts.myPosts);
 
